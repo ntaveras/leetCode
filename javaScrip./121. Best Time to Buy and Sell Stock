@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxProfit = function(prices) {
+    var bestReturn = 0,
+        lowPrice = prices[0];
+    
+    for(var i = 1; i < prices.length; i++){
+        if(prices[i] < lowPrice){
+            lowPrice = prices[i];
+        } else if(prices[i] - lowPrice > bestReturn){
+            bestReturn = prices[i] - lowPrice;
+        }
+    }
+    return bestReturn;
+};
