@@ -1,0 +1,21 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function(nums, target) {
+    let lowerEnd = 0,
+        higherEnd = nums.length - 1,
+        searchIndex;
+        
+    while(higherEnd >= lowerEnd){
+        searchIndex = lowerEnd + Math.floor((higherEnd - lowerEnd) / 2);
+        if( nums[searchIndex] == target) return searchIndex;
+        if( nums[searchIndex] > target){
+            higherEnd = searchIndex - 1;
+        } else{
+            lowerEnd = searchIndex + 1;
+        }
+    }
+    return -1;
+};
