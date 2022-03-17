@@ -1,0 +1,17 @@
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var subtractProductAndSum = function(n) {
+    let product = 1,
+        sum = 0;
+    
+    while(n !== 0){
+        let digit = n % 10; //returns last number e.g: 234 % 10 = 4
+        product *= digit;
+        sum += digit;
+        n = Math.floor(n / 10); // Removes last digit e.g: 234 / 10 = 23.04 = truncate(23.04 = 23)
+    }
+    
+    return product - sum;
+};
