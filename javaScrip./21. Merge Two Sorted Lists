@@ -1,0 +1,44 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ *
+ * A = [1, 2, 6, 8]
+ * B = [3, 4, 5, 7]
+ 
+ A[0] <= B[0] = [1] -> A[1] <= B[0] [1, 2] -> A[1] <= B[0] =[1, 2, 3] 
+ 
+ A[1] B[1] = [1,2,3,4] -> A[2] B[2] = [1,2,3,4,5] -> 
+ 
+ A[0] -> A[1] -> B[0] -> B[1] - B[2] -> A[2] -> B[3] -> A[3] -> null
+ */
+var mergeTwoLists = function(l1, l2) {
+    if(l1 == null || l2 == null){
+        if(l1 == null) return l2;
+        return l1;
+    }
+    
+    if(l1 == null && l2 == null) return l1;
+    if(l1.val < l2.val){
+        if(l1.next != null){
+            l1.next = mergeTwoLists(l1.next, l2);
+        } else{
+            l1.next = l2;
+        }
+        return l1;
+    } else{
+        if(l2.next != null){
+            l2.next = mergeTwoLists(l2.next, l1);
+        } else{
+            l2.next = l1;
+        }
+        return l2;
+    }
+};
