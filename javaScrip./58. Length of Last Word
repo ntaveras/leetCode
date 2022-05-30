@@ -1,0 +1,9 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLastWord = function(s) {
+    const arrayWords = s.trim().split(' ');
+    console.log(arrayWords);
+    return arrayWords[arrayWords.length - 1].length;
+};
